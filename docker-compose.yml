@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  hello-flask:
+    image: opklnm102/hello-flask:latest
+    ports:
+    - "5000:5000"
+    networks:
+      - backend
+  nginx:
+    image: nginx:1.19.9-alpine
+    ports:
+      - "80:80"
+    networks:
+      - backend
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+
+networks:
+  backend:
+    driver: bridge
