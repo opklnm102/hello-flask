@@ -29,6 +29,7 @@ build-image:
 .PHONY: push-image
 push-image: build-image
 	docker push $(IMAGE)
+	docker push $(IMAGE_NAME):latest
 
 .PHONY: clean-image
 clean-image:
