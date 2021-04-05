@@ -15,8 +15,8 @@ USER app
 
 COPY --chown=app:app . .
 
-EXPOSE 5000 9091
+EXPOSE 5000
 
-CMD ["uwsgi", "hello-flask.ini"]
+CMD ["gunicorn", "wsgi:application"]
 
 ENTRYPOINT ["./docker-entrypoint"]
