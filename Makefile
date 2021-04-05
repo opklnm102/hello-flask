@@ -36,4 +36,4 @@ clean-image:
 
 .PHONY: run-container
 run-container:
-	docker run --rm -p 5000:5000 $(IMAGE)
+	docker run --rm -p 5000:5000 -p 9091:9091 $(IMAGE)

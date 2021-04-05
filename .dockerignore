@@ -10,3 +10,5 @@ Makefile
 *.egg-info
 
 nginx
+*.log
+

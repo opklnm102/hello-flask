@@ -1,14 +1,22 @@
 FROM python:3.8.8-slim-buster
 
-WORKDIR /app
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends \
+      build-essential \
+      gcc \
+ && rm -rf /var/lib/apt/lists/*
 
 COPY ./requirements.txt ./
 RUN pip install -r requirements.txt
 
-COPY . .
+RUN useradd --create-home app
+WORKDIR /home/app
+USER app
 
-EXPOSE 5000
+COPY --chown=app:app . .
 
-CMD ["python", "-m", "flask", "run", "--host=0.0.0.0"]
+EXPOSE 5000 9091
+
+CMD ["uwsgi", "hello-flask.ini"]
 
 ENTRYPOINT ["./docker-entrypoint"]
