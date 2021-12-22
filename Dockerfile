@@ -11,6 +11,6 @@ COPY --chown=app:app . .
 
 EXPOSE 5000
 
-CMD ["gunicorn", "wsgi:application"]
+CMD ["gunicorn", "-c", "gunicorn.conf.py"]
 
 ENTRYPOINT ["./docker-entrypoint"]
