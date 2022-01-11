@@ -14,7 +14,7 @@ clean:
 	@find . ! \( -path './venv' -prune \) -type f -name '*.pyc' -delete
 
 bootstrap:
-	@pip install -r requirements.txt
+	@python -m pip install -r requirements.txt
 	@python setup.py develop
 
 IMAGE_NAME = opklnm102/hello-flask
