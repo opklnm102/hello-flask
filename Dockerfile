@@ -6,8 +6,9 @@ RUN apt-get update \
       gcc \
  && rm -rf /var/lib/apt/lists/*
 
-COPY ./requirements.txt ./
-RUN pip install -r requirements.txt
+COPY Pipfile* ./
+RUN python -m pip install pipenv \
+    && python -m pipenv install --system --deploy --ignore-pipfile
 
 FROM python:3.8.8-slim-buster
 

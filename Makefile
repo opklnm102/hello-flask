@@ -2,20 +2,20 @@
 .DEFAULT_GOAL := run
 
 test: clean lint
-	# @py.test test/ --cov app.py -s
+	@python -m pytest --co -v
 
 run: test
 	@python main.py
 
 lint:
-	@flake8 .
+	@python -m flake8 .
 
 clean:
 	@find . ! \( -path './venv' -prune \) -type f -name '*.pyc' -delete
 
 bootstrap:
-	@python -m pip install -r requirements.txt
-	@python setup.py develop
+	@python -m pip install pipenv
+	@python -m pipenv install --dev
 
 IMAGE_NAME = opklnm102/hello-flask
 VERSION := $(shell git rev-parse HEAD)
