@@ -14,8 +14,7 @@ clean:
 	@find . ! \( -path './venv' -prune \) -type f -name '*.pyc' -delete
 
 bootstrap:
-	@python -m pip install pipenv
-	@python -m pipenv install --dev
+	@poetry install
 
 IMAGE_NAME = opklnm102/hello-flask
 VERSION := $(shell git rev-parse HEAD)

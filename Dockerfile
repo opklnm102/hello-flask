@@ -6,9 +6,10 @@ RUN apt-get update \
       gcc \
  && rm -rf /var/lib/apt/lists/*
 
-COPY Pipfile* ./
-RUN python -m pip install pipenv \
-    && python -m pipenv install --system --deploy --ignore-pipfile
+COPY pyproject.toml poetry.lock ./
+RUN python -m pip install poetry \
+    && poetry config virtualenvs.create false \
+    && poetry install --no-dev
 
 FROM python:3.8.8-slim-buster
 

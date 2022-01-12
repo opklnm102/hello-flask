@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "hello-flask"
+version = "0.1.0"
+description = ""
+authors = ["Hue Kim <opklnm102@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+Flask = "^2.0.2"
+uWSGI = "^2.0.20"
+mysql-connector-python = "^8.0.27"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.5"
+flake8 = "^4.0.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
